@@ -1,0 +1,141 @@
+scriptencoding utf-8
+" ^^ Please leave the above line at the start of the file.
+"
+" Most recent update: 2009-10-10T01:16:24 CEST
+
+let g:name = 'Ulrik Bonde'
+let g:mail = 'ulrikbonde@gmail.com'
+let g:tex_flavor='latex'
+
+set nocompatible
+set bs=2
+set ai
+set history=50
+set ruler
+set viminfo='20,\"500
+set wildmenu
+set wildignore+=*.o,*~,.lo
+set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo,.pdf
+set nowrap
+set noinsertmode
+set nonumber
+set smartindent
+set showmatch
+set backspace=indent,eol,start
+set whichwrap+=<,>,[,]
+set lazyredraw
+set showfulltag
+set omnifunc=1
+set showcmd
+set background=dark
+set mouse=a
+set title
+set nocp
+set modeline
+set nofoldenable
+set hlsearch
+set tags+=/home/bonde/.vim/commontags
+set ttyfast
+
+" Set the statusline
+set laststatus=2
+set statusline=
+set statusline+=%n\
+set statusline+=%f\
+set statusline+=\[%{strlen(&ft)?&ft:'none'},
+set statusline+=%{&encoding},
+set statusline+=%{&fileformat}]
+set statusline+=%=
+set statusline+=%-14.(%l,%c%V%)\ %<%P
+
+if "" == &shell
+
+  if executable("/bin/bash")
+    set shell=/bin/bash
+
+    if has("eval")
+      let is_bash=1
+    endif
+  elseif executable("/bin/zsh")
+    set shell=/bin/zsh
+  endif
+
+endif
+
+" Always check for UTF-8 when trying to determine encodings.
+if &fileencodings !~? "utf-8"
+  set fileencodings+=utf-8
+endif
+
+" Make sure we have a sane fallback for encoding detection
+set fileencodings+=default
+
+if isdirectory(expand("$VIMRUNTIME/ftplugin"))
+  filetype plugin on
+  set grepprg=grep\ -nH\ $*
+  filetype indent on
+endif
+
+if has("eval")
+
+  function! <SID>UpdateRcHeader()
+    let l:c=col(".")
+    let l:l=line(".")
+    1,10s-\(Most recent update:\).*-\="Most recent update: ".strftime("%c")-e
+    call cursor(l:l, l:c)
+  endfunction
+
+  function! CleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+      return "\<Tab>"
+    else
+      return "\<C-P>"
+    endif
+  endfunction
+
+endif
+
+if has("autocmd")
+  augroup content
+    au!
+
+    " In text files, limit the width of text to 78 characters
+    autocmd BufNewFile,BufRead *.txt
+          \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
+          \     setlocal textwidth=78 |
+          \ endif
+
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+          \ if ! exists("g:leave_my_cursor_position_alone") |
+          \     if line("'\"") > 0 && line ("'\"") <= line("$") |
+          \         exe "normal g'\"" |
+          \     endif |
+          \ endif
+
+  augroup END
+
+  " Additional files
+  autocmd BufWritePre *.sh  :call <SID>UpdateRcHeader()
+  autocmd BufWritePre *vimrc  :call <SID>UpdateRcHeader()
+  autocmd BufWritePre *zshrc :call <SID>UpdateRcHeader()
+
+  autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
+  autocmd FileType css set smartindent
+  autocmd FileType html,css set noexpandtab tabstop=2
+
+
+endif " has("autocmd")
+
+iabbrev xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iabbrev cdate <c-r>=strftime("%d/%m/%y")<cr>
+
+map Q gq
+map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nnoremap <Space> <PageDown>
+inoremap <Tab>	<C-R>=CleverTab()<CR>
+inoremap <S-Tab> <Tab>
+
+colorscheme inkpot
+
+" vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :

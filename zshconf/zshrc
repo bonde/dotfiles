@@ -1,0 +1,134 @@
+#!/bin/zsh
+# -*- mode: shell-script -*-
+
+# Zshell configuration
+# Ulrik Bonde
+#
+# Most recent update: 2009-10-10T01:26:14 CEST
+
+# Set colors, fuck the polution ---------------------------------------------------------
+autoload -U colors
+colors
+
+NORM="%{"$'\033[00m'"%}"
+
+# vi-mode
+bindkey -v
+
+## Zsh-Completion -----------------------------------------------------------------------
+zstyle ':completion:*' use-cache 'yes'
+zstyle ':completion:*' cache-path ~/.cache/zsh/
+zstyle ':completion:*' expand 'yes'
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*' menu select=12
+
+# Correct in completion (this will probably make me a sloppy typist!!)
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Completing process IDs with menu selection:
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+# Ignore special patterns for vim
+zstyle ':completion:*:*vim:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
+                                                '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'
+
+autoload -U compinit
+compinit
+
+## Title and pwd------------------------------------------------------------------------
+# Set title before a new prompt is shown
+# The path shown in the terminal title is different depending on the user
+if [[ ${EUID} == 0 ]]; then
+  TITLEDIR="%d"
+else
+  TITLEDIR="%~"
+fi
+
+precmd() {
+  [[ -t 1 ]] || return
+  case $TERM in
+    sun-cmd) print -Pn "\e]l%~\e\\"
+    ;;
+    *xterm*|rxvt*|(dt|k|E)term) print -Pn "\e]2;%n@%M:${TITLEDIR}\a"
+    ;;
+  esac
+}
+
+# Show new dir if changed
+chpwd() {
+  echo; echo -n -e " \033[1;32m>\033[0m "; pwd
+}
+
+## Prompt options---------------------------------------------------------------------
+# Set the propmt according to userpriv
+autoload -U promptinit
+promptinit
+
+if [[ ${EUID} == 0 ]]; then
+  PROMPT="%B%{${bg[red]}%}%{${fg[white]}%}%n%b %#> "
+  RPROMPT="%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}"
+else
+  PROMPT="%B%{${fg[white]}%}%m >%b${NORM} "
+  RPROMPT="%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}"
+fi
+
+# Spelling/correction prompt
+SPROMPT="%{${fg[yellow]}%}zsh: correct '%R' to '%r'? ${NORM}(%UY%ues/%UN%uo/%UE%udit/%UA%ubort)"
+
+# Remove "Do you wisk to se all XX possibilities?"
+LISTPROMPT=""
+
+## Aliases--------------------------------------------------------------------------
+alias ls='ls --color=auto'
+alias vless='/usr/share/vim/vim72/macros/less.sh'
+
+# Where NOT to auto correct
+alias ln='nocorrect ln'
+alias rm='nocorrect rm -i'
+alias cp='nocorrect cp -i'
+alias mv='nocorrect mv -i'
+alias grep='nocorrect grep --colour=auto'
+alias mkdir='nocorrect mkdir'
+alias aptitude='nocorrect aptitude'
+
+# Associate certain file types to programs
+alias -s pdf=evince
+alias -s ps=gv
+alias -s chm=chmsee
+alias -s djvu=djview
+alias -s dvi=xdvi
+alias -s ppt=ooimpress
+alias -s doc=oowriter
+alias -s odt=oowriter
+alias -s rtf=oowriter
+alias -s ods=oocalc
+alias -s xls=oocalc
+alias -s xlt=oocalc
+
+## Exports--------------------------------------------------------------------------
+# History
+export HISTSIZE=1000
+export HISTFILE="${HOME}/.zhistory"
+export SAVEHIST=$HISTSIZE
+
+# Vim as man pager - Buuhhuuu broken
+#export MANPAGER="col -b | view -c 'set ft=man nomodifiable nolist' -"
+#export MANPAGER="vimmanpager"
+
+## setopts------------------------------------------------------------------------------
+setopt incappendhistory
+setopt sharehistory
+setopt histignorealldups
+setopt correctall
+
+## Skip zlogin, put it here instead-----------------------------------------------------
+# Fire up fortune :)
+echo; fortune -o -s off/spam off/sex; echo
+
+# vim: set filetype=zsh fenc=utf-8 tw=80 sw=2 sts=2 et :

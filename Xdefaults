@@ -1,0 +1,44 @@
+! Resources for urxvt
+! {{{ BEGIN pseudotransparency
+!URxvt*background:	black
+!URxvt*transparent:	true
+!URxvt*tintColor:	black
+!URxvt*shading:		8
+!URxvt*blurRadius:	6
+! }}} END fluxbox.conf
+
+! Only for composite
+URxvt*background:	rgba:0000/0000/0000/eeed
+URxvt*depth:		32
+! END composite
+URxvt*foreground:	lightgrey
+URxvt*fading:		25
+URxvt*cursorColor:	lightblue
+URxvt*reverseVideo:	false
+URxvt*scrollBar:	false
+URxvt*urlLauncher:	firefox
+URxvt*saveLines:	1024
+URxvt*secondaryScroll:	true
+URxvt*pointerColor:	lightgrey
+URxvt*pointerColor2:	black
+URxvt*pointerBlank:	true
+URxvt*pointerBlankDelay:2
+!URxvt.font: xft:Bitstream Vera Sans Mono-7.9
+
+! Resources for xTerm
+*XTerm*background:	black
+*XTerm*foreground:	lightgrey
+*XTerm*scrollBar:	true
+*XTerm*jumpScroll:	true
+*XTerm*multiScroll:	true
+
+! Resources for xClock
+xcloxk*foreground: white
+xclock*background: black
+xclock.face.background: black
+xclock*hourColor: white
+xclock*minuteColor: white
+xclock*majorColor: white
+xclock*minorColor: white
+
+! vim: set ft=xdefaults :
