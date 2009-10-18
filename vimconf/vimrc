@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2009-10-10T13:40:07 CEST
+" Most recent update: 2009-10-18T10:57:47 CEST
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -36,6 +36,7 @@ set nofoldenable
 set hlsearch
 set tags+=/home/bonde/.vim/commontags
 set ttyfast
+set mat=6
 
 " Set the statusline
 set laststatus=2
@@ -61,6 +62,10 @@ if "" == &shell
   endif
 
 endif
+
+" Encoding stuff
+set enc=utf-8
+set tenc=utf-8
 
 " Always check for UTF-8 when trying to determine encodings.
 if &fileencodings !~? "utf-8"
@@ -124,8 +129,22 @@ if has("autocmd")
   autocmd FileType css set smartindent
   autocmd FileType html,css set noexpandtab tabstop=2
 
-
 endif " has("autocmd")
+
+" Mark tabs and spaces
+if (&termencoding == "utf-8") || has("gui_running")
+  if v:version >= 700
+    set list listchars=tab:»·,trail:·,extends:…,nbsp:‗
+  else
+    set list listchars=tab:»·,trail:·,extends:…
+  endif
+else
+  if v:version >= 700
+    set list listchars=tab:>-,trail:.,extends:>,nbsp:_
+  else
+    set list listchars=tab:>-,trail:.,extends:>
+  endif
+endif
 
 iabbrev xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iabbrev cdate <c-r>=strftime("%d/%m/%y")<cr>
