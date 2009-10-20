@@ -1,15 +1,15 @@
 function PySpacesCfg()
-  set expandtab
-  set tabstop=8
-  set softtabstop=4
-  set shiftwidth=4
+  setlocal expandtab
+  setlocal tabstop=8
+  setlocal softtabstop=4
+  setlocal shiftwidth=4
 endfunction
 
 function PyTabsCfg()
-  set noexpandtab
-  set tabstop=4
-  set softtabstop=4
-  set shiftwidth=4
+  setlocal noexpandtab
+  setlocal tabstop=4
+  setlocal softtabstop=4
+  setlocal shiftwidth=4
 endfunction
 
 function PyIsTabIndent()
