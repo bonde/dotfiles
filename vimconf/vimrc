@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2009-10-18T10:57:47 CEST
+" Most recent update: 2009-10-20T01:58:30 CEST
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -37,6 +37,13 @@ set hlsearch
 set tags+=/home/bonde/.vim/commontags
 set ttyfast
 set mat=6
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+syntax on
 
 " Set the statusline
 set laststatus=2
@@ -98,6 +105,12 @@ if has("eval")
     endif
   endfunction
 
+  function! CallInterpreter()
+    if exists("b:interpreter")
+      exec ("!".b:interpreter." %")
+    endif
+  endfun
+
 endif
 
 if has("autocmd")
@@ -108,6 +121,12 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.txt
           \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
           \     setlocal textwidth=78 |
+          \ endif
+
+    " Read the interpretter if present
+    autocmd BufEnter *
+          \ if match( getline(1) , '^\#!') == 0 |
+          \     execute("let b:interpreter = getline(1)[2:]") |
           \ endif
 
     " When editing a file, always jump to the last cursor position
@@ -151,6 +170,7 @@ iabbrev cdate <c-r>=strftime("%d/%m/%y")<cr>
 
 map Q gq
 map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
 inoremap <Tab>	<C-R>=CleverTab()<CR>
 inoremap <S-Tab> <Tab>
