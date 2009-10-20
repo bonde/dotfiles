@@ -1,18 +1,18 @@
-function PySpacesCfg()
+function! PySpacesCfg()
   setlocal expandtab
   setlocal tabstop=8
   setlocal softtabstop=4
   setlocal shiftwidth=4
 endfunction
 
-function PyTabsCfg()
+function! PyTabsCfg()
   setlocal noexpandtab
   setlocal tabstop=4
   setlocal softtabstop=4
   setlocal shiftwidth=4
 endfunction
 
-function PyIsTabIndent()
+function! PyIsTabIndent()
   let lnum = 1
   let got_cols = 0  " 1 if previous lines ended with columns
   while lnum <= 100
