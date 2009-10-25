@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2009-10-20T23:57:59 CEST
+" Most recent update: 2009-10-25T19:02:24 CET
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -132,7 +132,7 @@ if has("autocmd")
           \ endif
 
     " When editing a file, always jump to the last cursor position
-    autocmd BufReadPost *
+    autocmd BufReadPost !gitcommit
           \ if ! exists("g:leave_my_cursor_position_alone") |
           \     if line("'\"") > 0 && line ("'\"") <= line("$") |
           \         exe "normal g'\"" |
@@ -147,6 +147,7 @@ if has("autocmd")
   autocmd BufWritePre *zshrc :call <SID>UpdateRcHeader()
 
   autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
+  autocmd FileType gitcommit set insertmode
   "autocmd FileType css set smartindent
   "autocmd FileType html,css set noexpandtab tabstop=2
 
