@@ -4,7 +4,7 @@
 # Zshell configuration
 # Ulrik Bonde
 #
-# Most recent update: 2009-10-10T01:26:14 CEST
+# Most recent update: 2009-10-25T15:25:06 CET
 
 # Set colors, fuck the polution ---------------------------------------------------------
 autoload -U colors
@@ -112,6 +112,9 @@ alias -s xls=oocalc
 alias -s xlt=oocalc
 
 ## Exports--------------------------------------------------------------------------
+# Include ruby gems in path
+export PATH=$PATH:/var/lib/gems/1.8/bin/
+
 # History
 export HISTSIZE=1000
 export HISTFILE="${HOME}/.zhistory"
