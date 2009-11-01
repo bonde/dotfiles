@@ -4,7 +4,7 @@
 # Zshell configuration
 # Ulrik Bonde
 #
-# Most recent update: 2009-10-25T15:25:06 CET
+# Most recent update: 2009-11-01T20:14:31 CET
 
 # Set colors, fuck the polution ---------------------------------------------------------
 autoload -U colors
@@ -123,6 +123,9 @@ export SAVEHIST=$HISTSIZE
 # Vim as man pager - Buuhhuuu broken
 #export MANPAGER="col -b | view -c 'set ft=man nomodifiable nolist' -"
 #export MANPAGER="vimmanpager"
+
+# Set the default editor for Ubuntu Karmic
+export EDITOR="vim"
 
 ## setopts------------------------------------------------------------------------------
 setopt incappendhistory

@@ -1,0 +1,8 @@
+<match key="info.product" string="TPPS/2 IBM TrackPoint">
+	<merge key="input.x11_options.EmulateWheel" type="string">true</merge>
+	<merge key="input.x11_options.EmulateWheelButton" type="string">2</merge>
+	<merge key="input.x11_options.YAxisMapping" type="string">4 5</merge>
+	<merge key="input.x11_options.Emulate3Buttons" type="string">true</merge>
+	<merge key="input.x11_options.EmulateWheelTimeOut" type="string">200</merge>
+	<merge key="input.x11_options.XAxisMapping" type="string">6 7</merge>
+</match>
