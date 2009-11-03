@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2009-10-25T19:02:24 CET
+" Most recent update: 2009-11-03T14:17:49 CET
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -147,7 +147,6 @@ if has("autocmd")
   autocmd BufWritePre *zshrc :call <SID>UpdateRcHeader()
 
   autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
-  autocmd FileType gitcommit set insertmode
   "autocmd FileType css set smartindent
   "autocmd FileType html,css set noexpandtab tabstop=2
 
@@ -178,7 +177,12 @@ nnoremap <Space> <PageDown>
 inoremap <Tab>	<C-R>=CleverTab()<CR>
 inoremap <S-Tab> <Tab>
 
-colorscheme inkpot
+" Set colorscheme
+if ($TERM == "rxvt-unicode")
+  colorscheme inkpot
+else
+  colorscheme elflord
+endif
 
 if has("gui_gtk")
   "set guioptions-=m
