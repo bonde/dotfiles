@@ -4,7 +4,7 @@
 # Zshell configuration
 # Ulrik Bonde
 #
-# Most recent update: 2009-11-01T20:14:31 CET
+# Most recent update: 2009-11-29T20:08:28 CET
 
 # Set colors, fuck the polution ---------------------------------------------------------
 autoload -U colors
@@ -36,7 +36,8 @@ zstyle ':completion:*:kill:*'   force-list always
 
 # Ignore special patterns for vim
 zstyle ':completion:*:*vim:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
-                                                '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'
+                                               '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'\
+                                               '?*.lot'
 
 autoload -U compinit
 compinit
