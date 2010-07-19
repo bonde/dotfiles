@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2009-11-18T13:06:22 CET
+" Most recent update: 2010-07-20T00:04:54 CEST
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -179,15 +179,9 @@ nnoremap <Space> <PageDown>
 inoremap <Tab>	<C-R>=CleverTab()<CR>
 inoremap <S-Tab> <Tab>
 
-" Set colorscheme
-if ($TERM == "rxvt-unicode")
-  colorscheme inkpot
-else
-  colorscheme elflord
-endif
-
-if has("gui_gtk")
+if has("gui_running")
   "set guioptions-=m
+  colorscheme inkpot
   set guioptions+=c
   set guioptions-=T
   set guioptions-=l
@@ -195,7 +189,13 @@ if has("gui_gtk")
   set guioptions-=r
   set guioptions-=R
 
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+elseif ($TERM == "rxvt-unicode")
+  colorscheme inkpot_mod
+else
+  " This might be a bit dangerous, but it works for now on Ubunut :)
+  set t_Co=256
+  colorscheme inkpot
 endif
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :

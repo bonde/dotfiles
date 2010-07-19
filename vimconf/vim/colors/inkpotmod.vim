@@ -1,12 +1,12 @@
 " Vim color file
 " Name:       inkpot.vim
-" Maintainer: Ciaran McCreesh <ciaran.mccreesh@googlemail.com>
-" Homepage:   http://github.com/ciaranm/inkpot/
-"
+" Maintainer: Ciaran McCreesh <ciaran.mccreesh@blueyonder.co.uk>
 " This should work in the GUI, rxvt-unicode (88 colour mode) and xterm (256
 " colour mode). It won't work in 8/16 colour terminals.
 "
-" To use a black background, :let g:inkpot_black_background = 1
+" Notice!
+" Colorscheme modded by Ulrik Bonde for transparent terminal
+" Furthermore some colors have been tweaked
 
 set background=dark
 hi clear
@@ -43,7 +43,7 @@ fun! <SID>X(a)
 endfun
 
 if ! exists("g:inkpot_black_background")
-    let g:inkpot_black_background = 0
+    let g:inkpot_black_background = 1
 endif
 
 if has("gui_running")
@@ -53,10 +53,8 @@ if has("gui_running")
         hi Normal         gui=NONE   guifg=#cfbfad   guibg=#000000
     endif
 
-    hi CursorLine         guibg=#2e2e37
-
     hi IncSearch      gui=BOLD   guifg=#303030   guibg=#cd8b60
-    hi Search         gui=NONE   guifg=#303030   guibg=#ad7b57
+    hi Search         gui=NONE   guifg=#303030   guibg=#cd8b60
     hi ErrorMsg       gui=BOLD   guifg=#ffffff   guibg=#ce4e4e
     hi WarningMsg     gui=BOLD   guifg=#ffffff   guibg=#ce8e4e
     hi ModeMsg        gui=BOLD   guifg=#7e7eae   guibg=NONE
@@ -138,24 +136,25 @@ if has("gui_running")
         hi SpellLocal   gui=undercurl guisp=#cccc66
         hi SpellCap     gui=undercurl guisp=#66cccc
 
-        hi MatchParen   gui=NONE      guifg=#cfbfad   guibg=#4e4e8f
+        hi MatchParen   gui=NONE      guifg=#404040   guibg=#8fff8b
     endif
 else
+    " <SID>X(16) old value
     if ! g:inkpot_black_background
         exec "hi Normal         cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(80)
     else
-        exec "hi Normal         cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(16)
+        exec "hi Normal         cterm=NONE   ctermfg=" . "NONE" . " ctermbg=" . "NONE"
     endif
 
     exec "hi IncSearch      cterm=BOLD   ctermfg=" . <SID>X(80) . " ctermbg=" . <SID>X(73)
-    exec "hi Search         cterm=NONE   ctermfg=" . <SID>X(80) . " ctermbg=" . <SID>X(52)
-    exec "hi ErrorMsg       cterm=BOLD   ctermfg=" . <SID>X(16) . " ctermbg=" . <SID>X(48)
+    exec "hi Search         cterm=NONE   ctermfg=" . <SID>X(80) . " ctermbg=" . <SID>X(73)
+    exec "hi ErrorMsg       cterm=BOLD   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(48)
     exec "hi WarningMsg     cterm=BOLD   ctermfg=" . <SID>X(16) . " ctermbg=" . <SID>X(68)
     exec "hi ModeMsg        cterm=BOLD   ctermfg=" . <SID>X(38) . " ctermbg=" . "NONE"
     exec "hi MoreMsg        cterm=BOLD   ctermfg=" . <SID>X(38) . " ctermbg=" . "NONE"
     exec "hi Question       cterm=BOLD   ctermfg=" . <SID>X(52) . " ctermbg=" . "NONE"
 
-    exec "hi StatusLine     cterm=BOLD   ctermfg=" . <SID>X(85) . " ctermbg=" . <SID>X(81)
+    exec "hi StatusLine     cterm=BOLD   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(81)
     exec "hi User1          cterm=BOLD   ctermfg=" . <SID>X(28) . " ctermbg=" . <SID>X(81)
     exec "hi User2          cterm=BOLD   ctermfg=" . <SID>X(39) . " ctermbg=" . <SID>X(81)
     exec "hi StatusLineNC   cterm=NONE   ctermfg=" . <SID>X(84) . " ctermbg=" . <SID>X(81)
@@ -185,7 +184,7 @@ else
 
     exec "hi Comment        cterm=NONE   ctermfg=" . <SID>X(52) . " ctermbg=" . "NONE"
     exec "hi Constant       cterm=NONE   ctermfg=" . <SID>X(73) . " ctermbg=" . "NONE"
-    exec "hi String         cterm=NONE   ctermfg=" . <SID>X(73) . " ctermbg=" . <SID>X(81)
+    exec "hi String         cterm=NONE   ctermfg=" . <SID>X(73) . " ctermbg=" . <SID>X(80)
     exec "hi Error          cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
     exec "hi Identifier     cterm=NONE   ctermfg=" . <SID>X(53) . " ctermbg=" . "NONE"
     exec "hi Ignore         cterm=NONE"
