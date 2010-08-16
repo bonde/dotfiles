@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2010-07-20T00:04:54 CEST
+" Most recent update: 2010-08-16T16:06:31 CEST
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -149,6 +149,7 @@ if has("autocmd")
   autocmd BufWritePre *zshrc :call <SID>UpdateRcHeader()
 
   autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
+  autocmd FileType *ruby set tabstop=2 softtabstop=2 shiftwidth=2
   "autocmd FileType css set smartindent
   "autocmd FileType html,css set noexpandtab tabstop=2
 
@@ -191,7 +192,7 @@ if has("gui_running")
 
   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 elseif ($TERM == "rxvt-unicode")
-  colorscheme inkpot_mod
+  colorscheme inkpotmod
 else
   " This might be a bit dangerous, but it works for now on Ubunut :)
   set t_Co=256
