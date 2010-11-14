@@ -1,7 +1,7 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 "
-" Most recent update: 2010-08-16T16:06:31 CEST
+" Most recent update: 2010-11-07T18:48:21 CET
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -38,7 +38,7 @@ set title
 set modeline
 set nofoldenable
 set hlsearch
-set tags+=/home/bonde/.vim/commontags
+"set tags+=/home/bonde/.vim/commontags
 set ttyfast
 set mat=6
 
@@ -174,7 +174,7 @@ iabbrev xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iabbrev cdate <c-r>=strftime("%d/%m/%y")<cr>
 
 map Q gq
-map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
 inoremap <Tab>	<C-R>=CleverTab()<CR>

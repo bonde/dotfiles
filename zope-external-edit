@@ -1,3 +1,4 @@
+#!/bin/bash
 # Zope External Editor helper application configuration
 
 [general]
@@ -5,7 +6,8 @@
 
 # Uncomment and specify an editor value to override the editor
 # specified in the environment
-editor = urxvt -e vim
+#editor = gnome-terminal -e vim
+editor = scribes
 
 # Automatic save interval, in seconds. Set to zero for
 # no auto save (save to Zope only on exit).

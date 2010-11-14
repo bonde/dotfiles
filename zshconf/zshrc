@@ -34,10 +34,14 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 
-# Ignore special patterns for vim
+# Ignore special patterns for vim and scribes
 zstyle ':completion:*:*vim:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
                                                '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'\
-                                               '?*.lot'
+                                               '?*.lot' '?*.latexmain' '?*_latexmk'
+
+zstyle ':completion:*:*scribes:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
+                                                   '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'\
+                                                   '?*.lot' '?*.latexmain' '?*_latexmk'
 
 autoload -U compinit
 compinit
@@ -88,6 +92,7 @@ LISTPROMPT=""
 ## Aliases--------------------------------------------------------------------------
 alias ls='ls --color=auto'
 alias vless='/usr/share/vim/vim72/macros/less.sh'
+alias clatex='latexmk -pvc -pdf'
 
 # Where NOT to auto correct
 alias ln='nocorrect ln'
@@ -99,6 +104,7 @@ alias mkdir='nocorrect mkdir'
 alias aptitude='nocorrect aptitude'
 
 # Associate certain file types to programs
+alias -s tex=clatex
 alias -s pdf=evince
 alias -s ps=gv
 alias -s chm=chmsee
