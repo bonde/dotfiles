@@ -4,7 +4,6 @@
 # Zshell configuration
 # Ulrik Bonde
 #
-# Most recent update: 2009-11-29T20:08:28 CET
 
 # Set colors, fuck the polution ---------------------------------------------------------
 autoload -U colors
@@ -93,6 +92,7 @@ LISTPROMPT=""
 alias ls='ls --color=auto'
 alias vless='/usr/share/vim/vim72/macros/less.sh'
 alias clatex='latexmk -pvc -pdf'
+alias latexmk='latexmk -pdf'
 
 # Where NOT to auto correct
 alias ln='nocorrect ln'

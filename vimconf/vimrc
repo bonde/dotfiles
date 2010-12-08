@@ -1,7 +1,5 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
-"
-" Most recent update: 2010-11-07T18:48:21 CET
 
 let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
@@ -94,13 +92,6 @@ endif
 
 if has("eval")
 
-  function! <SID>UpdateRcHeader()
-    let l:c=col(".")
-    let l:l=line(".")
-    1,10s-\(Most recent update:\).*-\="Most recent update: ".strftime("%c")-e
-    call cursor(l:l, l:c)
-  endfunction
-
   function! CleverTab()
     if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
       return "\<Tab>"
@@ -143,11 +134,6 @@ if has("autocmd")
 
   augroup END
 
-  " Additional files
-  autocmd BufWritePre *.sh  :call <SID>UpdateRcHeader()
-  autocmd BufWritePre *vimrc  :call <SID>UpdateRcHeader()
-  autocmd BufWritePre *zshrc :call <SID>UpdateRcHeader()
-
   autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
   autocmd FileType *ruby set tabstop=2 softtabstop=2 shiftwidth=2
   "autocmd FileType css set smartindent
@@ -179,6 +165,10 @@ map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
 inoremap <Tab>	<C-R>=CleverTab()<CR>
 inoremap <S-Tab> <Tab>
+" :imap <buffer> ;fo <C-O>mzfor( <++>; <++>; <++>)<CR>{ // <++><CR><++><CR>}<CR><C-O>'z<c-j>
+" :imap <buffer> ;fig <C-O>mzfig<CR>{ // <++><CR><++><CR>}<CR><C-O>'z<c-j>
+
+" inoremap <c-j> <Esc>/<++><CR><Esc>cf>
 
 if has("gui_running")
   "set guioptions-=m
