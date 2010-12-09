@@ -6,8 +6,7 @@
 
 # Uncomment and specify an editor value to override the editor
 # specified in the environment
-#editor = gnome-terminal -e vim
-editor = scribes
+editor = gnome-terminal -x vim
 
 # Automatic save interval, in seconds. Set to zero for
 # no auto save (save to Zope only on exit).

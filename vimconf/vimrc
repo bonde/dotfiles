@@ -5,7 +5,6 @@ let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
 let g:tex_flavor='latex'
 
-set runtimepath+=$HOME/dotfiles/vimconf/vim
 
 set nocompatible
 set autoindent
@@ -85,20 +84,13 @@ endif
 set fileencodings+=default
 
 if isdirectory(expand("$VIMRUNTIME/ftplugin"))
+  filetype on
   filetype plugin on
   set grepprg=grep\ -nH\ $*
   filetype indent on
 endif
 
 if has("eval")
-
-  function! CleverTab()
-    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-      return "\<Tab>"
-    else
-      return "\<C-P>"
-    endif
-  endfunction
 
   function! CallInterpreter()
     if exists("b:interpreter")
@@ -118,6 +110,9 @@ if has("autocmd")
           \     setlocal textwidth=78 |
           \ endif
 
+    " Do not jump to prev position in gitcommits
+    autocmd FileType gitcommit let g:leave_my_cursor_position_alone = "true"
+
     " Read the interpretter if present
     autocmd BufEnter *
           \ if match( getline(1) , '^\#!') == 0 |
@@ -125,7 +120,7 @@ if has("autocmd")
           \ endif
 
     " When editing a file, always jump to the last cursor position
-    autocmd BufReadPost !gitcommit
+    autocmd BufReadPost *
           \ if ! exists("g:leave_my_cursor_position_alone") |
           \     if line("'\"") > 0 && line ("'\"") <= line("$") |
           \         exe "normal g'\"" |
@@ -156,19 +151,11 @@ else
   endif
 endif
 
-iabbrev xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-iabbrev cdate <c-r>=strftime("%d/%m/%y")<cr>
-
 map Q gq
 " map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
-inoremap <Tab>	<C-R>=CleverTab()<CR>
-inoremap <S-Tab> <Tab>
-" :imap <buffer> ;fo <C-O>mzfor( <++>; <++>; <++>)<CR>{ // <++><CR><++><CR>}<CR><C-O>'z<c-j>
-" :imap <buffer> ;fig <C-O>mzfig<CR>{ // <++><CR><++><CR>}<CR><C-O>'z<c-j>
 
-" inoremap <c-j> <Esc>/<++><CR><Esc>cf>
 
 if has("gui_running")
   "set guioptions-=m
@@ -186,7 +173,7 @@ elseif ($TERM == "rxvt-unicode")
 else
   " This might be a bit dangerous, but it works for now on Ubunut :)
   set t_Co=256
-  colorscheme inkpot
+  colorscheme inkpotmod
 endif
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :
