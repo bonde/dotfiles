@@ -93,7 +93,7 @@ alias ls='ls --color=auto'
 alias vless='/usr/share/vim/vimcurrent/macros/less.sh'
 alias clatex='latexmk -pvc -pdf'
 alias latexmk='latexmk -pdf'
-alias xmatlab='matlab'
+alias xmatlab='/opt/matlab/bin/matlab'
 alias matlab='matlab -nodesktop'
 
 # Where NOT to auto correct
