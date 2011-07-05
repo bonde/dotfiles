@@ -11,7 +11,7 @@ dotfiles = 'dotfiles'
 
 # The dictionary of links to be created and targets.
 # Link names are relative to users home.
-# Targets are a tuple (dir,ans) where ans is the stabdard answer.
+# Targets are a tuple (dir,ans) where ans is the standard answer.
 # Target dirs are relative to the dotfiles dir.
 linkdict = { '.vimrc' : ('vimconf/vimrc','y'),
              '.vim' : ('vimconf/vim','y'),
