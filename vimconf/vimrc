@@ -25,7 +25,6 @@ set ignorecase
 set smartcase
 set magic
 set backspace=indent,eol,start
-set lazyredraw
 set showfulltag
 set omnifunc=1
 set showcmd
@@ -45,6 +44,12 @@ set shiftwidth=4
 set expandtab
 
 syntax on
+
+" Spell checking
+"
+" Apparently this option breaks the suggestions list for spellchecking
+""set lazyredraw
+set spellsuggest=fast,20
 
 " Settings for git-branch-information plugin
 let g:git_branch_status_head_current=1

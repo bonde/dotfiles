@@ -144,6 +144,11 @@ setopt correctall
 
 ## Skip zlogin, put it here instead-----------------------------------------------------
 # Fire up fortune :)
-echo; fortune -o -s off/spam off/sex; echo
+# Apparently Fedora does not provide offensive fortunes
+if [[ $HOSTNAME == "osiris" ]]; then
+  echo; fortune -s 60% paradoxum 10% definitions 30% hitchhiker; echo
+else
+  echo; fortune -o -s off/spam off/sex; echo
+fi
 
 # vim: set filetype=zsh fenc=utf-8 tw=80 sw=2 sts=2 et :
