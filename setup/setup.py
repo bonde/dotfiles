@@ -17,6 +17,7 @@ linkdict = { '.vimrc' : ('vimconf/vimrc','y'),
              '.vim' : ('vimconf/vim','y'),
              '.zshrc' : ('zshconf/zshrc','y'),
              '.latexmkrc' : ('latexmkrc','y'),
+             '.xinputrc' : ('xinputrc','y'),
              '.zope-external-edit' : ('zope-external-edit','n'),
              '.Xdefaults' : ('Xdefaults','n')
          }

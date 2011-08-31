@@ -46,6 +46,9 @@ fi
 # Set colors
 set_value "color.ui" "true"
 
+# Set merge tool
+set_value "merge.tool" "meld"
+
 
 echo "Please review and clean up the config file if necessary."
 echo "Open .gitconfig in editor [Y/n]?"
