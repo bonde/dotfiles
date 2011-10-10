@@ -36,11 +36,7 @@ zstyle ':completion:*:kill:*'   force-list always
 # Ignore special patterns for vim and scribes
 zstyle ':completion:*:*vim:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
                                                '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'\
-                                               '?*.lot' '?*.latexmain' '?*_latexmk'
-
-zstyle ':completion:*:*scribes:*' ignored-patterns '*?.pdf' '*?.ps' '*?.toc' '*?.aux' '*?.png'\
-                                                   '?*.jpg' '?*.out' '?*.bbl' '?*.blg' '?*.lof'\
-                                                   '?*.lot' '?*.latexmain' '?*_latexmk'
+                                               '?*.lot' '?*.latexmain' '?*_latexmk' '?*.pyc'
 
 autoload -U compinit
 compinit
