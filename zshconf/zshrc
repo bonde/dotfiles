@@ -11,8 +11,10 @@ colors
 
 NORM="%{"$'\033[00m'"%}"
 
-# vi-mode
+# vi-mode (also vim-like history completion)
 bindkey -v
+bindkey "\e[A" history-beginning-search-backward
+bindkey "\e[B" history-beginning-search-forward
 
 ## Zsh-Completion -----------------------------------------------------------------------
 zstyle ':completion:*' use-cache 'yes'
@@ -115,6 +117,7 @@ alias -s rtf=oowriter
 alias -s ods=oocalc
 alias -s xls=oocalc
 alias -s xlt=oocalc
+
 
 ## Exports--------------------------------------------------------------------------
 # Include ruby gems in path
