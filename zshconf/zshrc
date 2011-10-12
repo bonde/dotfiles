@@ -16,6 +16,13 @@ bindkey -v
 bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
 
+# Version Control System Info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
+zstyle ':vcs_info:*' formats       '%F{5}[%F{2}%b%F{5}]%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
 ## Zsh-Completion -----------------------------------------------------------------------
 zstyle ':completion:*' use-cache 'yes'
 zstyle ':completion:*' cache-path ~/.cache/zsh/
@@ -62,22 +69,31 @@ precmd() {
   esac
 }
 
+vcs_info_wrapper() {
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "${vcs_info_msg_0_}"
+  fi
+}
+
 # Show new dir if changed
+# Also, update vcs_info
 chpwd() {
-  echo; echo -n -e " \033[1;32m>\033[0m "; pwd
+  vcs_info
+  echo; echo -n -e " \033[1;32m>\033[0m "; echo $PWD
 }
 
 ## Prompt options---------------------------------------------------------------------
 # Set the propmt according to userpriv
 autoload -U promptinit
 promptinit
+setopt prompt_subst
 
 if [[ ${EUID} == 0 ]]; then
-  PROMPT="%B%{${bg[red]}%}%{${fg[white]}%}%n%b %#> "
-  RPROMPT="%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}"
+  PROMPT='%B%{${bg[red]}%}%{${fg[white]}%}%n%b %#> '
+  RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
 else
-  PROMPT="%B%{${fg[white]}%}%m >%b${NORM} "
-  RPROMPT="%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}"
+  PROMPT='%B%{${fg[white]}%}%m >%b${NORM} '
+  RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
 fi
 
 # Spelling/correction prompt
