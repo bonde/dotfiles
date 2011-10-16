@@ -165,7 +165,7 @@ endif " has("autocmd")
 " Mark tabs and spaces
 if (&termencoding == "utf-8") || has("gui_running")
   if v:version >= 700
-    set list listchars=tab:»·,trail:·,extends:…,nbsp:‗
+    set list listchars=tab:»\ ,trail:·,extends:…,nbsp:‗,eol:¬
   else
     set list listchars=tab:»·,trail:·,extends:…
   endif
