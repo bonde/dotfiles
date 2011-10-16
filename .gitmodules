@@ -1,0 +1,3 @@
+[submodule "vimconf/vim/bundle/tabular"]
+	path = vimconf/vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
