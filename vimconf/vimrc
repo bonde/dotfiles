@@ -5,6 +5,8 @@ let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
 let g:tex_flavor='latex'
 
+call pathogen#infect()
+
 
 set nocompatible
 set autoindent
