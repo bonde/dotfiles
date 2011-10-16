@@ -18,10 +18,12 @@ bindkey "\e[B" history-beginning-search-forward
 
 # Version Control System Info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
-zstyle ':vcs_info:*' formats       '%F{5}[%F{2}%b%F{5}]%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}*'
+zstyle ':vcs_info:*' unstagedstr '%F{yellow}*'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '%F{blue}[%F{green}%b%F{3}|%F{1}%a%F{blue}]%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' enable git svn
 
 ## Zsh-Completion -----------------------------------------------------------------------
 zstyle ':completion:*' use-cache 'yes'
@@ -60,6 +62,12 @@ else
 fi
 
 precmd() {
+  if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+    zstyle ':vcs_info:*' formats '%F{blue}[%F{green}%b%c%u%F{blue}]'
+  } else {
+    zstyle ':vcs_info:*' formats '%F{blue}[%F{green}%b%c%u%F{red}*%F{blue}]'
+  }
+  vcs_info
   [[ -t 1 ]] || return
   case $TERM in
     sun-cmd) print -Pn "\e]l%~\e\\"
@@ -78,7 +86,6 @@ vcs_info_wrapper() {
 # Show new dir if changed
 # Also, update vcs_info
 chpwd() {
-  vcs_info
   echo; echo -n -e " \033[1;32m>\033[0m "; echo $PWD
 }
 
