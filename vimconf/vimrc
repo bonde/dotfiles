@@ -14,7 +14,7 @@ set history=50
 set ruler
 set viminfo='20,\"500
 set wildmenu
-set wildignore+=*.o,*~,.lo
+set wildignore+=*.o,*~,*.lo,*.pyc
 set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo,.pdf,.lof,.lot
 set nowrap
 set noinsertmode
