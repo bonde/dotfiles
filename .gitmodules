@@ -4,3 +4,6 @@
 [submodule "vimconf/vim/bundle/vim-git"]
 	path = vimconf/vim/bundle/vim-git
 	url = https://github.com/tpope/vim-git.git
+[submodule "vimconf/vim/bundle/pyflakes"]
+	path = vimconf/vim/bundle/pyflakes
+	url = git://github.com/kevinw/pyflakes-vim.git
