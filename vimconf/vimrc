@@ -45,6 +45,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" Set file format to unix type
+set ffs=unix,dos
+set fileformat=unix
+set sessionoptions+=unix
+
 syntax on
 
 " Spell checking
@@ -216,5 +221,6 @@ endif
 if has("win32")
   set directory=.,$TEMP
 endif
+
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :
