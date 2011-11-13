@@ -1,0 +1,15 @@
+#!/bin/bash
+
+DOTFILESDIR=$HOME/dotfiles/
+
+$DOTFILESDIR/setup/setup_links.py
+$DOTFILESDIR/setup/setup_git.sh
+
+cd $DOTFILESDIR
+
+git submodule init
+git submodule update
+
+cd vimconf/vim/bundle/pyflakes
+git submodule init
+git submodule update

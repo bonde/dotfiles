@@ -1,4 +1,6 @@
 Helper scripts for setting up the dotfiles and git config.
 
-The setup.py script just makes it easy to setup the symlinks while setup_git.sh
-automates git configurations I always seem to forget :)
+The setup_links.py script just makes it easy to setup the symlinks while
+setup_git.sh automates git configurations I always seem to forget :)
+
+Run setup to run the above scripts and also initialize git submodules
