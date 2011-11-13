@@ -163,7 +163,7 @@ if has("autocmd")
 endif " has("autocmd")
 
 " Mark tabs and spaces
-if (&termencoding == "utf-8") || has("gui_running")
+if ((&termencoding == "utf-8") || has("gui_running")) && !(has("win32") && !has("gui_running"))
   if v:version >= 700
     set list listchars=tab:»\ ,trail:·,extends:…,nbsp:‗,eol:¬
   else
@@ -171,7 +171,7 @@ if (&termencoding == "utf-8") || has("gui_running")
   endif
 else
   if v:version >= 700
-    set list listchars=tab:>-,trail:.,extends:>,nbsp:_
+    set list listchars=tab:>-,trail:.,extends:>,nbsp:_,eol:#
   else
     set list listchars=tab:>-,trail:.,extends:>
   endif
@@ -185,22 +185,36 @@ nnoremap <Space> <PageDown>
 
 
 if has("gui_running")
+  if has("win32")
+    colorscheme camo
+    set columns=128
+    set lines=32
+    set guifont=Consolas:h11:cANSI
+  else
+    colorscheme inkpot
+    set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+  endif
   "set guioptions-=m
-  colorscheme inkpot
   set guioptions+=c
   set guioptions-=T
   set guioptions-=l
   set guioptions-=L
   set guioptions-=r
   set guioptions-=R
-
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 elseif ($TERM == "rxvt-unicode")
   colorscheme inkpotmod
 else
-  " This might be a bit dangerous, but it works for now on Ubunut :)
-  set t_Co=256
-  colorscheme inkpotmod
+  if has("win32")
+    colorscheme pablo
+  else
+    set t_Co=256
+    colorscheme inkpotmod
+  endif
+endif
+
+" Fix E30 on swap file for no name
+if has("win32")
+  set directory=.,$TEMP
 endif
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :
