@@ -7,3 +7,6 @@
 [submodule "vimconf/vim/bundle/pyflakes"]
 	path = vimconf/vim/bundle/pyflakes
 	url = git://github.com/kevinw/pyflakes-vim.git
+[submodule "vimconf/vim/bundle/vim-fugitive"]
+	path = vimconf/vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
