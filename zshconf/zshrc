@@ -144,7 +144,7 @@ alias -s xlt=oocalc
 
 ## Exports--------------------------------------------------------------------------
 # Include ruby gems in path
-export PATH=$PATH:/var/lib/gems/1.8/bin/
+export PATH=$PATH:/var/lib/gems/1.8/bin/:$HOME/local/bin
 
 # History
 export HISTSIZE=1000
