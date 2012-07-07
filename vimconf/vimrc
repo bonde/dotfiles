@@ -39,6 +39,7 @@ set hlsearch
 "set tags+=/home/bonde/.vim/commontags
 set ttyfast
 set mat=6
+set hidden
 
 set tabstop=4
 set softtabstop=4

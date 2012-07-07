@@ -110,6 +110,7 @@ SPROMPT="%{${fg[yellow]}%}zsh: correct '%R' to '%r'? ${NORM}(%UY%ues/%UN%uo/%UE%
 LISTPROMPT=""
 
 ## Aliases--------------------------------------------------------------------------
+alias vims='vim --servername VIM --remote'
 alias ls='ls -p --color=auto --hide="*.pyc"'
 alias vless='/usr/share/vim/vimcurrent/macros/less.sh'
 alias clatex='latexmk -pvc -pdf'
