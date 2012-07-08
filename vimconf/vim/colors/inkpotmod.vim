@@ -172,7 +172,7 @@ else
     exec "hi DiffDelete     cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(32)
     exec "hi DiffAdd        cterm=NONE   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(20)
 
-    exec "hi Folded         cterm=BOLD   ctermfg=" . <SID>X(79) . " ctermbg=" . <SID>X(8)
+    exec "hi Folded         cterm=BOLD   ctermfg=" . <SID>X(84) . " ctermbg=" . <SID>X(80)
     exec "hi FoldColumn     cterm=NONE   ctermfg=" . <SID>X(39) . " ctermbg=" . <SID>X(80)
 
     exec "hi Directory      cterm=NONE   ctermfg=" . <SID>X(28) . " ctermbg=" . "NONE"

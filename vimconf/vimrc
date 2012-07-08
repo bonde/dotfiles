@@ -40,6 +40,7 @@ set hlsearch
 set ttyfast
 set mat=6
 set hidden
+set virtualedit=all
 
 set tabstop=4
 set softtabstop=4
@@ -59,15 +60,21 @@ syntax on
 ""set lazyredraw
 set spellsuggest=fast,20
 
+
 " Set the statusline
 set laststatus=2
 set statusline=
-set statusline+=%n\
-set statusline+=%f%m\
-set statusline+=\[%{strlen(&ft)?&ft:'none'},
+set statusline+=%n
+set statusline+=\ %2*
+set statusline+=%f
+set statusline+=%1*  "switch to User1 highlight
+set statusline+=%m%r
+set statusline+=%*   "switch back to statusline highlight
+set statusline+=%q
+set statusline+=\ [%{strlen(&ft)?&ft:'none'},
 set statusline+=%{&encoding},
-set statusline+=%{&fileformat}]
-set statusline+=%{fugitive#statusline()}
+set statusline+=%{&fileformat}]\ 
+set statusline+=(%{fugitive#head('detached')})
 set statusline+=%=
 set statusline+=%-14.(%l,%c%V%)\ %<%P
 
@@ -206,6 +213,9 @@ endif
 if has("win32")
   set directory=.,$TEMP
 endif
+
+hi User1 ctermfg=red guifg=red
+hi User2 ctermfg=darkgreen guifg=darkgreen
 
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :
