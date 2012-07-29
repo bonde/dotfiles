@@ -7,6 +7,10 @@ let g:tex_flavor='latex'
 
 call pathogen#infect()
 
+let g:syntastic_python_checker_args='--ignore=E501,E401'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=0
+let g:syntastic_stl_format = '[%t]'
 
 set nocompatible
 set autoindent
@@ -64,19 +68,23 @@ set spellsuggest=fast,20
 " Set the statusline
 set laststatus=2
 set statusline=
-set statusline+=%n
-set statusline+=\ %2*
+set statusline+=%<%n\ 
+set statusline+=%2*
 set statusline+=%f
-set statusline+=%1*  "switch to User1 highlight
-set statusline+=%m%r
 set statusline+=%*   "switch back to statusline highlight
 set statusline+=%q
 set statusline+=\ [%{strlen(&ft)?&ft:'none'},
 set statusline+=%{&encoding},
 set statusline+=%{&fileformat}]\ 
 set statusline+=(%{fugitive#head('detached')})
+set statusline+=%3*
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 set statusline+=%=
-set statusline+=%-14.(%l,%c%V%)\ %<%P
+set statusline+=%-14.(%l,%c%V%)\ %P
+set statusline+=%1*  "switch to User1 highlight
+set statusline+=%m%r
+set statusline+=%*   "switch back to statusline highlight
 
 if "" == &shell
 
@@ -180,6 +188,30 @@ map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
 map <F2> :NERDTreeToggle<CR>
 
+" Buffer shortcuts
+nnoremap ]b :bnext<CR>
+nnoremap [b :bprevious<CR>
+nnoremap ]B :blast<CR>
+nnoremap [B :bfirst<CR>
+nnoremap <Leader>b :ls<CR>
+nnoremap <Leader>d :bd<CR>
+
+" Location List Shortcuts
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprevious<CR>
+nnoremap ]L :llast<CR>
+nnoremap [L :lfirst<CR>
+nnoremap  <Leader>l :lwin<CR>
+
+" Quicklist Shortcuts
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprevious<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap <Leader>q :cwin<CR>
+
+:command Gitk !gitk --all &
+
 
 if has("gui_running")
   if has("win32")
@@ -216,6 +248,7 @@ endif
 
 hi User1 ctermfg=red guifg=red
 hi User2 ctermfg=darkgreen guifg=darkgreen
+hi User3 cterm=bold ctermbg=darkred ctermfg=white guifg=white
 
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et :
