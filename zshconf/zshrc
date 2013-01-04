@@ -5,7 +5,7 @@
 # Ulrik Bonde
 #
 
-# Set colors, fuck the polution ---------------------------------------------------------
+# Set colors ---------------------------------------------------------
 autoload -U colors
 colors
 
@@ -13,8 +13,12 @@ NORM="%{"$'\033[00m'"%}"
 
 # vi-mode (also vim-like history completion)
 bindkey -v
+
 bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
+
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" history-beginning-search-backward
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" history-beginning-search-forward
 
 # Version Control System Info
 autoload -Uz vcs_info
