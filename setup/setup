@@ -9,3 +9,6 @@ cd $DOTFILESDIR
 
 git submodule init
 git submodule update
+
+sudo apt-get install python-pip
+sudo pip install flake8
