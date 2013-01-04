@@ -9,7 +9,3 @@ cd $DOTFILESDIR
 
 git submodule init
 git submodule update
-
-cd vimconf/vim/bundle/pyflakes
-git submodule init
-git submodule update
