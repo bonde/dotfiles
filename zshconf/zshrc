@@ -115,7 +115,7 @@ alias ls='ls -p --color=auto --hide="*.pyc"'
 alias vless='/usr/share/vim/vimcurrent/macros/less.sh'
 alias clatex='latexmk -pvc -pdf'
 alias latexmk='latexmk -pdf'
-alias xmatlab='/opt/matlab/bin/matlab'
+alias xmatlab='"matlab"'
 alias matlab='matlab -nodesktop'
 
 # Where NOT to auto correct
@@ -147,6 +147,9 @@ alias -s xlt=oocalc
 # Include ruby gems in path
 export PATH=$PATH:/var/lib/gems/1.8/bin/:$HOME/local/bin
 
+# Include matlab in path
+export PATH=$PATH:/usr/local/MATLAB/R2011b/bin/
+
 # History
 export HISTSIZE=1000
 export HISTFILE="${HOME}/.zhistory"
@@ -156,7 +159,7 @@ export SAVEHIST=$HISTSIZE
 #export MANPAGER="col -b | view -c 'set ft=man nomodifiable nolist' -"
 #export MANPAGER="vimmanpager"
 
-# Set the default editor for Ubuntu Karmic
+# Set the default editor
 export EDITOR="vim"
 
 ## setopts------------------------------------------------------------------------------
