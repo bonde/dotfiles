@@ -153,6 +153,10 @@ export PATH=$PATH:/var/lib/gems/1.8/bin/:$HOME/local/bin
 
 # Include matlab in path
 export PATH=$PATH:/usr/local/MATLAB/R2011b/bin/
+export PATH=$PATH:/usr/local/maple17/bin/
+export CUDA_PATH=/usr/lib/nvidia-cuda-toolkit/
+export NVSDKCOMPUTE_ROOT=$CUDA_PATH
+export INTELOCLSDKROOT=/usr/lib64/OpenCL/vendors/intel/
 
 # History
 export HISTSIZE=1000
