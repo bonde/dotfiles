@@ -38,6 +38,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*' menu select=12
+#zstyle ':completion:*' special-dirs true
 
 # Correct in completion (this will probably make me a sloppy typist!!)
 zstyle ':completion:*' completer _complete _match _approximate
