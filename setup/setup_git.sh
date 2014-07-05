@@ -31,8 +31,9 @@ set_value "credential.helper" "cache --timeout=3600"
 # Set colors
 set_value "color.ui" "true"
 
-# Set merge tool
-set_value "merge.tool" "meld"
+# Use fugitive as merge tool
+git config --global mergetool.fugitive.cmd 'vim -f -c "Gdiff" "$MERGED"'
+git config --global merge.tool fugitive
 
 
 echo "Please review and clean up the config file if necessary."
