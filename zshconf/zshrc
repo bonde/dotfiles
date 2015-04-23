@@ -168,6 +168,9 @@ export HISTSIZE=1000
 export HISTFILE="${HOME}/.zhistory"
 export SAVEHIST=$HISTSIZE
 
+# VST plugins
+export VST_PATH=/usr/lib/vst/:$HOME/.vst-bridges/
+
 # Vim as man pager - Buuhhuuu broken
 #export MANPAGER="col -b | view -c 'set ft=man nomodifiable nolist' -"
 #export MANPAGER="vimmanpager"
