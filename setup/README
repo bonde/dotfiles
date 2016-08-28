@@ -4,3 +4,6 @@ The setup_links.py script just makes it easy to setup the symlinks while
 setup_git.sh automates git configurations I always seem to forget :)
 
 Run setup to run the above scripts and also initialize git submodules
+
+To change the shell for the current user, run
+    chsh -s /bin/zsh
