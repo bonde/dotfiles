@@ -7,3 +7,5 @@ Run setup to run the above scripts and also initialize git submodules
 
 To change the shell for the current user, run
     chsh -s /bin/zsh
+
+Fix the brightness controls after installing nvidia drivers by copying the xorg file
