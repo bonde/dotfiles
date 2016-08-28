@@ -10,9 +10,3 @@
 [submodule "vimconf/vim/bundle/vim-surround"]
 	path = vimconf/vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vimconf/vim/bundle/coffee-script"]
-	path = vimconf/vim/bundle/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vimconf/vim/bundle/syntastic"]
-	path = vimconf/vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
