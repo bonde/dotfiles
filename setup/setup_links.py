@@ -7,6 +7,7 @@ import errno
 # Program variables
 home = os.path.expanduser('~')
 dotfiles = 'dotfiles'
+dry_run = False
 
 
 # The dictionary of links to be created and targets.
@@ -16,10 +17,7 @@ dotfiles = 'dotfiles'
 linkdict = { '.vimrc' : ('vimconf/vimrc','y'),
              '.vim' : ('vimconf/vim','y'),
              '.zshrc' : ('zshconf/zshrc','y'),
-             '.latexmkrc' : ('latexmkrc','y'),
-             '.xinputrc' : ('xinputrc','y'),
-             '.zope-external-edit' : ('zope-external-edit','n'),
-             '.Xdefaults' : ('Xdefaults','n')
+             '.latexmkrc' : ('latexmkrc','y')
          }
 
 
@@ -58,8 +56,12 @@ def prompt(link):
 def create_symlink(link):
     linkpath = os.path.join(home,link)
     targetpath = os.path.join(home, dotfiles, linkdict[link][0])
+
     try:
-        os.symlink(targetpath, linkpath)
+        if (not dry_run):
+            os.symlink(targetpath, linkpath)
+        else:
+            print "Would create symlink to %s as %s" % (targetpath, linkpath)
     except OSError as e:
         if e.errno is errno.EEXIST:
             print "File %s exists!" % linkpath
@@ -78,8 +80,10 @@ def create_symlink(link):
 # Run this thing
 def main():
     for link in linkdict:
+
         make_link = prompt(link)
         made_link = False
+
         if make_link:
             made_link = create_symlink(link)
 
