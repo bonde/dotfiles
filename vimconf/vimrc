@@ -7,11 +7,6 @@ let g:tex_flavor='latex'
 
 call pathogen#infect()
 
-let g:syntastic_python_checker_args='--ignore=E501,E401'
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=0
-let g:syntastic_stl_format = '[%t]'
-
 set nocompatible
 set autoindent
 set history=50
@@ -79,9 +74,6 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'},
 set statusline+=%{&encoding},
 set statusline+=%{&fileformat}]\ 
 set statusline+=(%{fugitive#head('detached')})
-set statusline+=%3*
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 set statusline+=%=
 set statusline+=%-14.(%l,%c%V%)\ %P
 set statusline+=%1*  "switch to User1 highlight
