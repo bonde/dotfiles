@@ -101,11 +101,20 @@ promptinit
 setopt prompt_subst
 
 if [[ ${EUID} == 0 ]]; then
+  # Superuser
   PROMPT='%B%{${bg[red]}%}%{${fg[white]}%}%n%b %#> '
   RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
 else
-  PROMPT='%B%{${fg[white]}%}%m >%b${NORM} '
-  RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
+  # Normal user
+  # Set colors according to host name
+  if [[ ${HOST} == "image" ]]; then
+    # Different background color
+    PROMPT='%B%{${bg[grey]}%}%{${fg[white]}%}%m >%b${NORM} '
+    RPROMPT='%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
+  else
+    PROMPT='%B%{${fg[white]}%}%m >%b${NORM} '
+    RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
+  fi
 fi
 
 # Spelling/correction prompt
@@ -149,27 +158,34 @@ alias -s xlt=oocalc
 
 
 ## Exports--------------------------------------------------------------------------
-# Include ruby gems in path
-export PATH=$PATH:/var/lib/gems/1.8/bin/:$HOME/local/bin
+# Based on host name
 
-# Include matlab in path
-export PATH=$PATH:/usr/local/MATLAB/R2013a/bin/
+if [[ ${HOST} == "image" ]]; then
+  # Fix git diff on image server
+  export LESS="-M -I -R"
+else
+  # Include ruby gems in path
+  export PATH=$PATH:/var/lib/gems/1.8/bin/:$HOME/local/bin
 
-export CUDA_PATH=/usr/lib/nvidia-cuda-toolkit/
-export NVSDKCOMPUTE_ROOT=$CUDA_PATH
-export INTELOCLSDKROOT=/usr/lib64/OpenCL/vendors/intel/
+  # Include matlab in path
+  export PATH=$PATH:/usr/local/MATLAB/R2013a/bin/
 
-# Include maple
-export MAPLE="$HOME/maple17"
-export PATH=$PATH:$MAPLE/bin/
+  export CUDA_PATH=/usr/lib/nvidia-cuda-toolkit/
+  export NVSDKCOMPUTE_ROOT=$CUDA_PATH
+  export INTELOCLSDKROOT=/usr/lib64/OpenCL/vendors/intel/
+
+  # Include maple
+  export MAPLE="$HOME/maple17"
+  export PATH=$PATH:$MAPLE/bin/
+
+  # VST plugins
+  export VST_PATH=/usr/lib/vst/:$HOME/.vst-bridges/
+fi
 
 # History
 export HISTSIZE=1000
 export HISTFILE="${HOME}/.zhistory"
 export SAVEHIST=$HISTSIZE
-
-# VST plugins
-export VST_PATH=/usr/lib/vst/:$HOME/.vst-bridges/
 
 # Vim as man pager - Buuhhuuu broken
 #export MANPAGER="col -b | view -c 'set ft=man nomodifiable nolist' -"
