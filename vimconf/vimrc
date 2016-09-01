@@ -69,7 +69,12 @@ set statusline+=%<%n\
 set statusline+=%2*
 set statusline+=%f
 set statusline+=%*   "switch back to statusline highlight
-set statusline+=%q
+
+" I'm actually not sure what I need the quicklist for
+if $HOST != "image"
+  set statusline+=%q
+endif
+
 set statusline+=\ [%{strlen(&ft)?&ft:'none'},
 set statusline+=%{&encoding},
 set statusline+=%{&fileformat}]\ 
