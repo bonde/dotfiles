@@ -136,6 +136,7 @@ alias clatex='latexmk -pvc -pdf'
 alias latexmk='latexmk -pdf'
 alias xmatlab='"matlab"'
 alias matlab='matlab -nodesktop'
+alias files='nautilus --no-desktop $PWD'
 
 # Where NOT to auto correct
 alias ln='nocorrect ln'
