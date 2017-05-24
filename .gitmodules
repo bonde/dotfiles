@@ -10,3 +10,6 @@
 [submodule "vimconf/vim/bundle/vim-surround"]
 	path = vimconf/vim/bundle/vim-surround
 	url = git@github.com:tpope/vim-surround.git
+[submodule "vimconf/vim/bundle/command-t"]
+	path = vimconf/vim/bundle/command-t
+	url = https://github.com/wincent/command-t.git
