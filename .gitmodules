@@ -13,3 +13,6 @@
 [submodule "vimconf/vim/bundle/command-t"]
 	path = vimconf/vim/bundle/command-t
 	url = https://github.com/wincent/command-t.git
+[submodule "vimconf/vim/bundle/FastFold"]
+	path = vimconf/vim/bundle/FastFold
+	url = https://github.com/Konfekt/FastFold.git
