@@ -117,7 +117,7 @@ else
     PROMPT='%B%{${bg[grey]}%}%{${fg[white]}%}%m >%b${NORM} '
     RPROMPT='%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
   else
-    PROMPT='%B%{${fg[white]}%}%m >%b${NORM} '
+    PROMPT='%B%{${fg[white]}%}∮ %m >%b${NORM} '
     RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
   fi
 fi
@@ -136,7 +136,7 @@ alias clatex='latexmk -pvc -pdf'
 alias latexmk='latexmk -pdf'
 alias xmatlab='"matlab"'
 alias matlab='matlab -nodesktop'
-alias files='nautilus --no-desktop $PWD'
+alias files='nautilus --no-desktop $PWD &'
 
 # Where NOT to auto correct
 alias ln='nocorrect ln'

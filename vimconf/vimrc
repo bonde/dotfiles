@@ -5,6 +5,9 @@ let g:name = 'Ulrik Bonde'
 let g:mail = 'ulrikbonde@gmail.com'
 let g:tex_flavor='latex'
 
+" Enable tex folding. set fdm=syntax in modeline to enable
+let g:tex_fold_enabled=1
+
 call pathogen#infect()
 
 set nocompatible
