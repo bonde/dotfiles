@@ -77,6 +77,17 @@ precmd() {
       zstyle ':vcs_info:*' formats '%F{blue}[%F{green}%b%c%u%F{red}*%F{blue}]'
     }
     vcs_info
+
+    # Check if we are inside a virtual environment
+    if [[ -e .envrc ]] || [[ -v VIRTUAL_ENV ]]; then
+      VENV_PROMPT="+ (.venvrc)"
+    else
+      VENV_PROMPT="∮"
+    fi
+
+    # Determine if any files have been hidden
+    #LINES=$(find -maxdepth 1 -type f \( -iname \*.pyc \) -or -type d \( -name \))
+
   fi
   [[ -t 1 ]] || return
   case $TERM in
@@ -96,7 +107,7 @@ vcs_info_wrapper() {
 # Show new dir if changed
 # Also, update vcs_info
 chpwd() {
-  echo; echo -n -e " \033[1;32m>\033[0m "; echo $PWD
+  echo; echo -n -e "\033[1;32m->\033[0m "; echo $PWD
 }
 
 ## Prompt options---------------------------------------------------------------------
@@ -117,7 +128,7 @@ else
     PROMPT='%B%{${bg[grey]}%}%{${fg[white]}%}%m >%b${NORM} '
     RPROMPT='%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
   else
-    PROMPT='%B%{${fg[white]}%}∮ %m >%b${NORM} '
+    PROMPT='%B%{${fg[white]}%}${VENV_PROMPT} %m >%b${NORM} '
     RPROMPT='$(vcs_info_wrapper)%{${fg[yellow]}%}[%{${fg[white]}%}%*%{${fg[yellow]}%}]${NORM}'
   fi
 fi
@@ -128,9 +139,12 @@ SPROMPT="%{${fg[yellow]}%}zsh: correct '%R' to '%r'? ${NORM}(%UY%ues/%UN%uo/%UE%
 # Remove "Do you wisk to se all XX possibilities?"
 LISTPROMPT=""
 
+# Set list colors
+eval `dircolors -b $HOME/dotfiles/zshconf/LS_COLORS`
+
 ## Aliases--------------------------------------------------------------------------
 alias vims='vim --servername VIM --remote'
-alias ls='ls -p --color=auto --hide="*.pyc"'
+alias ls='ls -p --color=auto --hide="*.pyc" --hide="__pycache__*" -F'
 alias vless='/usr/share/vim/vimcurrent/macros/less.sh'
 alias clatex='latexmk -pvc -pdf'
 alias latexmk='latexmk -pdf'
@@ -205,5 +219,8 @@ setopt incappendhistory
 setopt sharehistory
 setopt histignorealldups
 setopt correctall
+
+## Enable direnv
+eval "$(direnv hook zsh)"
 
 # vim: set filetype=zsh fenc=utf-8 tw=80 sw=2 sts=2 et :
