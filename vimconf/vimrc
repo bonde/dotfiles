@@ -10,6 +10,14 @@ let g:tex_fold_enabled=1
 
 call pathogen#infect()
 
+"let g:syntastic_python_checker_args='--ignore=E501,E401'
+let g:syntastic_enable_signs=0
+let g:syntastic_stl_format = '[%t]'
+let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 set nocompatible
 set autoindent
 set history=50
@@ -82,6 +90,9 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'},
 set statusline+=%{&encoding},
 set statusline+=%{&fileformat}]\ 
 set statusline+=(%{fugitive#head('detached')})
+set statusline+=%3*
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 set statusline+=%=
 set statusline+=%-14.(%l,%c%V%)\ %P
 set statusline+=%1*  "switch to User1 highlight
@@ -164,7 +175,8 @@ if has("autocmd")
   autocmd FileType mail,human set nohlsearch formatoptions+=t textwidth=72 nomodeline
   autocmd FileType *ruby set tabstop=2 softtabstop=2 shiftwidth=2
   "autocmd FileType css set smartindent
-  "autocmd FileType html,css set noexpandtab tabstop=2
+  autocmd FileType html*,css set tabstop=2 softtabstop=2 shiftwidth=2
+  "autocmd FileType html* inoremap \{{ {{
 
 endif " has("autocmd")
 
@@ -184,9 +196,9 @@ else
 endif
 
 
-map Q gq
+" map Q gq
 " map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <F5> :call CallInterpreter()<CR>
+" map <F5> :call CallInterpreter()<CR>
 nnoremap <Space> <PageDown>
 
 " Buffer shortcuts
@@ -202,7 +214,8 @@ nnoremap ]l :lnext<CR>
 nnoremap [l :lprevious<CR>
 nnoremap ]L :llast<CR>
 nnoremap [L :lfirst<CR>
-nnoremap  <Leader>l :lwin<CR>
+nnoremap <Leader>l :lwin<CR>
+nnoremap <Leader>L :lclose<CR>
 
 " Quicklist Shortcuts
 nnoremap ]q :cnext<CR>
@@ -210,6 +223,7 @@ nnoremap [q :cprevious<CR>
 nnoremap ]Q :clast<CR>
 nnoremap [Q :cfirst<CR>
 nnoremap <Leader>q :cwin<CR>
+nnoremap <Leader>Q :cclose<CR>
 
 :command Gitk !gitk --all &
 

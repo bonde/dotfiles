@@ -16,3 +16,9 @@
 [submodule "vimconf/vim/bundle/FastFold"]
 	path = vimconf/vim/bundle/FastFold
 	url = https://github.com/Konfekt/FastFold.git
+[submodule "vimconf/vim/bundle/lexima.vim"]
+	path = vimconf/vim/bundle/lexima.vim
+	url = git@github.com:cohama/lexima.vim.git
+[submodule "vimconf/vim/bundle/syntastic"]
+	path = vimconf/vim/bundle/syntastic
+	url = git@github.com:vim-syntastic/syntastic.git
