@@ -1,0 +1,21 @@
+scriptencoding utf-8
+" ^^ Please leave the above line at the start of the file.
+
+" Key Mappings
+nnoremap <Space> <PageDown>
+nnoremap <Leader>sv :action SplitVertically<CR>
+
+
+" Compile Changes
+nnoremap <Leader>cc :action CompileDirty<CR>
+
+" Compile file
+nnoremap <Leader>ff :action Compile<CR>
+
+" Force Rebuilding of all files
+nnoremap <Leader>bb :action CompileProject<CR>
+
+nnoremap <Leader>sc :action Scala.Sbt.RunCommand "compile"<CR>
+
+" Commands
+command gadd :action Git.Add<CR>

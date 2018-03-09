@@ -16,6 +16,7 @@ dry_run = False
 # Target dirs are relative to the dotfiles dir.
 linkdict = { '.vimrc' : ('vimconf/vimrc','y'),
              '.vim' : ('vimconf/vim','y'),
+             '.ideavimrc' : ('vimconf/ideavimrc','y'),
              '.zshrc' : ('zshconf/zshrc','y'),
              '.latexmkrc' : ('latexmkrc','y')
          }
