@@ -17,12 +17,14 @@ dry_run = False
 linkdict = { '.vimrc' : ('vimconf/vimrc','y'),
              '.vim' : ('vimconf/vim','y'),
              '.ideavimrc' : ('vimconf/ideavimrc','y'),
+             '.config/Code/User/keybinding.json' : ('vscode/keybinding.json','y'),
+             '.config/Code/User/settings.json' : ('vscode/settings.json','y'),
              '.zshrc' : ('zshconf/zshrc','y'),
-             '.latexmkrc' : ('latexmkrc','y')
+             '.latexmkrc' : ('latexmkrc','n')
          }
 
 
-# Dictionaty for prompt inputs
+# Dictionary for prompt inputs
 ansdict = { 'y' : True,
             'n' : False
         }
@@ -58,8 +60,23 @@ def create_symlink(link):
     linkpath = os.path.join(home,link)
     targetpath = os.path.join(home, dotfiles, linkdict[link][0])
 
+    dirname = os.path.dirname(linkpath)
+
+    print dirname
+
+    # Does the taget path exist? If not, try to create it.
+    if not os.path.exists(dirname):
+        print "Path: %s does not exist!" % dirname
+
+        try:
+            if (not dry_run):
+                os.mkdirs(dirname)
+        except OSError as e:
+                print e
+
     try:
         if (not dry_run):
+            # Does the directory exist?
             os.symlink(targetpath, linkpath)
         else:
             print "Would create symlink to %s as %s" % (targetpath, linkpath)

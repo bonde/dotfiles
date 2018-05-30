@@ -87,13 +87,12 @@ precmd() {
 
     # Determine if any files have been hidden
     #LINES=$(find -maxdepth 1 -type f \( -iname \*.pyc \) -or -type d \( -name \))
-
   fi
   [[ -t 1 ]] || return
   case $TERM in
     sun-cmd) print -Pn "\e]l%~\e\\"
     ;;
-    *xterm*|rxvt*|(dt|k|E)term) print -Pn "\e]2;%n@%M:${TITLEDIR}\a"
+    *xterm*|rxvt*|(dt|k|E)term) print -Pn "\e]2;${TERMTITLE}%n@%M:${TITLEDIR}\a"
     ;;
   esac
 }
@@ -143,6 +142,14 @@ LISTPROMPT=""
 eval `dircolors -b $HOME/dotfiles/zshconf/LS_COLORS`
 
 ## Aliases--------------------------------------------------------------------------
+
+function set_term_title() {
+  if [ "$1" != "" ]
+  then
+    export TERMTITLE="$1 :: "
+  fi
+}
+
 alias vims='vim --servername VIM --remote'
 alias ls='ls -p --color=auto --hide="*.pyc" --hide="__pycache__*" -F'
 alias vless='/usr/share/vim/vimcurrent/macros/less.sh'
@@ -151,6 +158,7 @@ alias latexmk='latexmk -pdf'
 alias xmatlab='"matlab"'
 alias matlab='matlab -nodesktop'
 alias files='nautilus --no-desktop $PWD &'
+alias ttitle=set_term_title
 
 # Where NOT to auto correct
 alias ln='nocorrect ln'
@@ -201,6 +209,8 @@ else
   # VST plugins
   export VST_PATH=/usr/lib/vst/:$HOME/.vst-bridges/
 fi
+
+export _JAVA_OPTIONS=-XX:MaxMetaspaceSize=2048m
 
 # History
 export HISTSIZE=1000

@@ -1,6 +1,9 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
+set ignorecase
+set smartcase
+
 " Key Mappings
 nnoremap <Space> <PageDown>
 nnoremap <Leader>sv :action SplitVertically<CR>

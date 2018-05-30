@@ -1,0 +1,5 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+{ "key": "escape escape",     "command": "workbench.action.focusFirstEditorGroup",
+                                     "when": "!editorFocus" },
+]
