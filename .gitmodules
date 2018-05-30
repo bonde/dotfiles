@@ -22,3 +22,6 @@
 [submodule "vimconf/vim/bundle/syntastic"]
 	path = vimconf/vim/bundle/syntastic
 	url = git@github.com:vim-syntastic/syntastic.git
+[submodule "vimconf/vim/bundle/vim-fish"]
+	path = vimconf/vim/bundle/vim-fish
+	url = git@github.com:dag/vim-fish.git
