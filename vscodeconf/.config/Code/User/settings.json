@@ -1,4 +1,10 @@
 {
+    // Extensions
+    // Vim
+    // Python
+    // file-incons
+    // Bash Beautify
+
     // Fonts
     "editor.fontFamily": "'Hack', 'Droid Sans Mono', 'Inconsolata'",
     "editor.fontSize": 15,

@@ -139,7 +139,7 @@ SPROMPT="%{${fg[yellow]}%}zsh: correct '%R' to '%r'? ${NORM}(%UY%ues/%UN%uo/%UE%
 LISTPROMPT=""
 
 # Set list colors
-eval `dircolors -b $HOME/dotfiles/zshconf/LS_COLORS`
+eval `dircolors -b $HOME/dotfiles/LS_COLORS`
 
 ## Aliases--------------------------------------------------------------------------
 

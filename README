@@ -1,0 +1,5 @@
+Add a module
+    stow -t $HOME <module>
+
+Remove a module
+    stow -t $HOME -D <module>
