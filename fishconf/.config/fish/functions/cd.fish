@@ -1,6 +1,5 @@
-# Defined in /tmp/fish.jBH1uO/cd.fish @ line 2
 function cd --description 'Change directory'
-	set -l MAX_DIR_HIST 25
+    set -l MAX_DIR_HIST 25
 
     if test (count $argv) -gt 1
         printf "%s\n" (_ "Too many args for cd command")

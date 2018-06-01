@@ -18,6 +18,9 @@
     "editor.renderLineHighlight": "all",
     "editor.mouseWheelZoom": true,
 
+    "terminal.integrated.fontFamily": "'Hack', 'Inconsolata', 'Monospace Regular','Droid Sans Mono'",
+    "terminal.integrated.fontSize": 14,
+
     // Vim
     "vim.cmdLineInitialColon": true,
     "vim.hlsearch": true,
@@ -115,7 +118,15 @@
     ],
     "window.menuBarVisibility": "toggle",
     "workbench.iconTheme": "file-icons",
-    "workbench.colorTheme": "Monokai",
 
-    "window.zoomLevel": 0.25
+    "window.zoomLevel": 0.25,
+
+    "files.watcherExclude": {
+        "*.pyc": true,
+        "**/__pycache__/**": true,
+        "**/.venv/**": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true
+    }
 }

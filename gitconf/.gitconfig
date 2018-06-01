@@ -1,0 +1,15 @@
+[user]
+	name = Ulrik Bonde
+	email = ub@cwconsult.dk
+[credential]
+	helper = cache --timeout=3600
+[color]
+	ui = true
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[merge]
+	tool = fugitive

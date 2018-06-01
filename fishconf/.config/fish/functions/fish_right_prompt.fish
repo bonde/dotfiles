@@ -1,4 +1,4 @@
-function fish_right_prompt
+function fish_right_prompt --description "Print the right-prompt"
     set -l time_string
 
     set time_string (date "+%H:%M:%S")
@@ -11,36 +11,36 @@ function fish_right_prompt
     end
 
     if not set -q __fish_git_prompt_color
-        set -g __fish_git_prompt_color brblue --bold
+        set -g __fish_git_prompt_color brblue
     end
     if not set -q __fish_git_prompt_color_branch
-        set -g __fish_git_prompt_color_branch green --bold
+        set -g __fish_git_prompt_color_branch green
     end
     if not set -q __fish_git_prompt_showupstream
         set -g __fish_git_prompt_showupstream "informative"
     end
     if not set -q __fish_git_prompt_char_upstream_ahead
-        set -g __fish_git_prompt_char_upstream_ahead "↑"
+        set -g __fish_git_prompt_char_upstream_ahead "+"
     end
     if not set -q __fish_git_prompt_char_upstream_behind
-        set -g __fish_git_prompt_char_upstream_behind "↓"
+        set -g __fish_git_prompt_char_upstream_behind "-"
     end
     if not set -q __fish_git_prompt_char_upstream_prefix
-        set -g __fish_git_prompt_char_upstream_prefix ""
+        set -g __fish_git_prompt_char_upstream_prefix ":"
     end
 
     if not set -q __fish_git_prompt_char_stagedstate
-        set -g __fish_git_prompt_char_stagedstate "●"
+        set -g __fish_git_prompt_char_stagedstate "+"
     end
     if not set -q __fish_git_prompt_char_dirtystate
-        set -g __fish_git_prompt_char_dirtystate "✚"
+        set -g __fish_git_prompt_char_dirtystate "+"
     end
     if not set -q __fish_git_prompt_char_untrackedfiles
         # set -g __fish_git_prompt_char_untrackedfiles "…"
         set -g __fish_git_prompt_char_untrackedfiles "*"
     end
     if not set -q __fish_git_prompt_char_conflictedstate
-        set -g __fish_git_prompt_char_conflictedstate "✖"
+        set -g __fish_git_prompt_char_conflictedstate "/"
     end
     if not set -q __fish_git_prompt_char_cleanstate
         # set -g __fish_git_prompt_char_cleanstate "✔"
@@ -51,10 +51,10 @@ function fish_right_prompt
     end
 
     if not set -q __fish_git_prompt_color_dirtystate
-        set -g __fish_git_prompt_color_dirtystate blue
+        set -g __fish_git_prompt_color_dirtystate yellow
     end
     if not set -q __fish_git_prompt_color_stagedstate
-        set -g __fish_git_prompt_color_stagedstate yellow
+        set -g __fish_git_prompt_color_stagedstate green
     end
     if not set -q __fish_git_prompt_color_invalidstate
         set -g __fish_git_prompt_color_invalidstate red
@@ -75,6 +75,6 @@ function fish_right_prompt
 
     printf '%s' (__fish_vcs_prompt)
     echo -n -s (set_color reset) (set_color yellow) [
-    echo -n -s (set_color reset) "$time_string"
+    echo -n -s (set_color white) "$time_string"
     echo -n -s (set_color yellow) "] " (set_color reset)
 end

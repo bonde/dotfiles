@@ -1,0 +1,8 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern="authorized_keys" type="PLAIN_TEXT" />
+      <mapping ext="model" type="Scala" />
+    </extensionMap>
+  </component>
+</application>

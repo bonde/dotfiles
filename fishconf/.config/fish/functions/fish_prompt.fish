@@ -3,6 +3,8 @@ function fish_prompt --description 'Write out the prompt'
     set -l color_prefix
     set -l color_suffix
     set -l color_host
+    set -l prefix
+    set -l hidden_indicator
     set -l suffix
 
     # set color_host ff5fd7 # Hot Pink
@@ -24,8 +26,22 @@ function fish_prompt --description 'Write out the prompt'
             set suffix '>'
     end
 
-    echo -n -s (set_color -o $color_prefix) "∮ " (set_color $color_host)
-    echo -n -s (prompt_hostname) (set_color normal)
+    # Count number of hidden files and directories
+    if [ $hidden_count -gt 2 ]
+        set hidden_indicator (set_color ff5fd7)"!"(set_color $color_prefix)
+    else
+        set hidden_indicator " "
+    end
+
+    # Check if we are in a virtual environment
+    if set -q VIRTUAL_ENV
+        set prefix "+$hidden_indicator(.venvrc) "
+    else
+        set prefix "∮$hidden_indicator"
+    end
+
+    echo -n -s (set_color -o $color_prefix) "$prefix"
+    echo -n -s (set_color -o $color_host) (prompt_hostname)
     echo -n -s (set_color -o $color_suffix) " $suffix " (set_color normal)
 
 end
