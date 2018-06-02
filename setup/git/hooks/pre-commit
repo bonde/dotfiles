@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Updates VS Code extenstions in settings.json
+
+DOTFILES_HOME=`git rev-parse --show-toplevel`
+SETTINGS_FILE=$DOTFILES_HOME/settings.json
+
+# Check if code is installed
+if ! command -v code >/dev/null 2>&1
+then
+    # just exit if it is not installed
+    exit 0
+fi
+
+EXTENSIONS=""
+for EXTENSION in $(code --list-extensions); do
+    EXTENSIONS="\"$EXTENSION\", $EXTENSIONS"
+done
+
+LEN=$(echo -n $EXTENSIONS | wc -m)
+
+if [ $LEN -gt 0 ]; then
+
+    EXTENSIONS=$(echo $EXTENSIONS | cut -c-$(expr $LEN - 1))
+
+    JQ_FILTER_FILE=$DOTFILES_HOME/.jq_filter
+    NEW_SETTINGS_TMP_FILE=$DOTFILES_HOME/.new_settings.json
+
+    cat > $JQ_FILTER_FILE <<- EndOfProgram
+to_entries |
+    map(if .key == "vscode_extensions"
+    then . + {"value": [$EXTENSIONS]}
+    else .
+    end
+    ) |
+    from_entries
+EndOfProgram
+
+    jq --from-file $JQ_FILTER_FILE $SETTINGS_FILE > $NEW_SETTINGS_TMP_FILE
+
+    cat $NEW_SETTINGS_TMP_FILE | sed -e 's/],/],\n/g' > $SETTINGS_FILE
+
+    rm -f $JQ_FILTER_FILE
+    rm -f $NEW_SETTINGS_TMP_FILE
+
+fi
+
+OUT=$(git diff --exit-code --name-only $SETTINGS_FILE)
+
+if [ $? -ne 0 ]
+then
+    echo ""
+    echo "Visual Studio Code extensions have been updated."
+    echo "You can now ignore this message by running:"
+    echo ""
+    echo "      git commit --no-verify"
+    echo ""
+    exit 1
+fi

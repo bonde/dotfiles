@@ -1,0 +1,43 @@
+{
+  "required_packages": [
+    "stow",
+    "fonts-hack-ttf",
+    "fonts-inconsolata",
+    "fish",
+    "zsh",
+    "vim",
+    "git-gui",
+    "gitk",
+    "gitg",
+    "ruby"
+  ],
+
+  "optional_packages": [
+    "inkscape",
+    "gimp"
+  ],
+
+  "vim_bundles": [
+    "git@github.com:godlygeek/tabular.git",
+    "git@github.com:tpope/vim-fugitive.git",
+    "git@github.com:tpope/vim-git.git",
+    "git@github.com:tpope/vim-surround.git",
+    "git@github.com:wincent/command-t.git",
+    "git@github.com:cohama/lexima.vim.git",
+    "git@github.com:vim-syntastic/syntastic.git",
+    "git@github.com:dag/vim-fish.git"
+  ],
+
+  "vscode_extensions": [
+    "vscodevim.vim",
+    "skyapps.fish-vscode",
+    "sidneys1.gitconfig",
+    "shakram02.bash-beautify",
+    "ms-python.python",
+    "lunaryorn.fish-ide",
+    "file-icons.file-icons",
+    "dunstontc.vscode-gitignore-syntax",
+    "dunstontc.viml",
+    "bibhasdn.django-html"
+  ]
+}

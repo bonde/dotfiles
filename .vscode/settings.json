@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Code/Backups": true,
+        "**/Code/*Cache*": true,
+        "**/Code/Cookies*": true,
+        "**/Code/Local Storage": true,
+        "**/Code/logs": true,
+        "**/Code/languagepacks.json": true,
+        "**/Code/machineid": true,
+        "**/Code/Preferences": true,
+        "**/Code/storage.json": true,
+        "**/Code/User/workspaceStorage": true
+    }
+}

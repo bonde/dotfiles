@@ -1,3 +1,5 @@
+Run setup.sh to set up dotfiles on a machine.
+
 Add a module
     stow -t $HOME <module>
 

@@ -2,3 +2,17 @@
 ~*
 *~
 .netrwhist
+modules/vscodeconf/.config/Code/Backups/*
+modules/vscodeconf/.config/Code/Cache/*
+modules/vscodeconf/.config/Code/CachedData/*
+modules/vscodeconf/.config/Code/CachedExtensions/*
+modules/vscodeconf/.config/Code/GPUCache/*
+modules/vscodeconf/.config/Code/Local Storage/*
+modules/vscodeconf/.config/Code/logs/*
+modules/vscodeconf/.config/Code/User/workspaceStorage/*
+modules/vscodeconf/.config/Code/Cookies
+modules/vscodeconf/.config/Code/Cookies-journal
+modules/vscodeconf/.config/Code/languagepacks.json
+modules/vscodeconf/.config/Code/machineid
+modules/vscodeconf/.config/Code/Preferences
+modules/vscodeconf/.config/Code/storage.json
