@@ -36,7 +36,7 @@ if [[ "$ANSWER" == "y" || "$ANSWER" == "Y" || -z "$ANSWER" ]]; then
             fi
         done
 
-        if [ ! -z "$PACKAGES"]; then
+        if [ ! -z "$PACKAGES" ]; then
             echo ""
             echo "sudo apt install ${PACKAGES}"
             sudo apt install "$PACKAGES"

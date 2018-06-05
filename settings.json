@@ -1,5 +1,6 @@
 {
   "required_packages": [
+    "curl",
     "stow",
     "fonts-hack-ttf",
     "fonts-inconsolata",
